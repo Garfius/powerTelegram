@@ -1,0 +1,853 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NetTelegramBotApi</name>
+    </assembly>
+    <members>
+        <member name="T:NetTelegramBotApi.IPostProcessingRequired">
+            <summary>
+            Implemented by Types, which require additional post-processing after receiving from server
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.TelegramBot.WebProxy">
+            <summary>
+            Proxy information for internet access
+            </summary>
+        </member>
+        <member name="M:NetTelegramBotApi.TelegramBot.DeserializeUpdate(System.String)">
+            <summary>
+            Use this method to deserialize <see cref="T:NetTelegramBotApi.Types.Update">Update</see> object, sent to <see cref="T:NetTelegramBotApi.Requests.SetWebhook">your webhook</see> by Telegram server.
+            </summary>
+            <param name="json">Json-string with Update (body of HTTP POST to your webhook)</param>
+            <returns>Deserialized <see cref="T:NetTelegramBotApi.Types.Update"/> message</returns>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.FileToSend.AlreadyUploaded">
+            <summary>
+            True, if file is already uploaded to server, only <see cref="P:NetTelegramBotApi.Requests.FileToSend.ExistingFileId"/> is used.
+            Otherwise, <see cref="P:NetTelegramBotApi.Requests.FileToSend.NewFileContent"/> and <see cref="P:NetTelegramBotApi.Requests.FileToSend.NewFileName"/> are used;
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.ForwardMessage">
+            <summary>
+            Use this method to forward messages of any kind. On success, the sent Message is returned.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.ForwardMessage.ChatId">
+            <summary>
+            Unique identifier for the message recipient — User or GroupChat id
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.ForwardMessage.FromChatId">
+            <summary>
+            Unique identifier for the chat where the original message was sent — User or GroupChat id
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.ForwardMessage.MessageId">
+            <summary>
+            Unique message identifier
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:NetTelegramBotApi.Requests.GetFile" -->
+        <member name="P:NetTelegramBotApi.Requests.GetFile.FileId">
+            <summary>
+            File identifier to get info about
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.GetMe">
+            <summary>
+            A simple method for testing your bot's auth token. Requires no parameters. 
+            Returns basic information about the bot in form of a User object.
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.GetUpdates">
+            <summary>
+            Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.GetUpdates.Offset">
+            <summary>
+            Identifier of the first update to be returned. 
+            Must be greater by one than the highest among the identifiers of previously received updates. 
+            By default, updates starting with the earliest unconfirmed update are returned. 
+            An update is considered confirmed as soon as getUpdates is called with an offset higher than its update_id.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.GetUpdates.Limit">
+            <summary>
+            Limits the number of updates to be retrieved. Values between 1—100 are accepted. Defaults to 100
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.GetUpdates.Timeout">
+            <summary>
+            Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.GetUserProfilePhotos">
+            <summary>
+            Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.GetUserProfilePhotos.UserId">
+            <summary>
+            Unique identifier of the target user
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.GetUserProfilePhotos.Offset">
+            <summary>
+            Sequential number of the first photo to be returned. By default, all photos are returned.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.GetUserProfilePhotos.Limit">
+            <summary>
+            Limits the number of photos to be retrieved. Values between 1—100 are accepted. Defaults to 100.
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendAudio">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. 
+            For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). 
+            On success, the sent Message is returned. 
+            Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendAudio.Duration">
+            <summary>
+            Duration of sent audio in seconds
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendAudio.Performer">
+            <summary>
+            Performer of sent audio
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendAudio.Title">
+            <summary>
+            Title of sent audio
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendChatAction">
+            <summary>
+            Use this method when you need to tell the user that something is happening on the bot's side. 
+            The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). 
+            </summary>
+            <remarks>
+            We only recommend using this method when a response from the bot will take a <b>noticeable</b> amount of time to arrive.
+            </remarks>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendChatAction.ChatId">
+            <summary>
+            Unique identifier for the message recipient — User or GroupChat id
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendChatAction.Action">
+            <summary>
+            Type of action to broadcast. 
+            Choose one, depending on what the user is about to receive: 
+              typing for text messages, 
+              upload_photo for photos, 
+              record_video or upload_video for videos, 
+              record_audio or upload_audio for audio files, 
+              upload_document for general files, 
+              find_location for location data.
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendDocument">
+            <summary>
+            Use this method to send general files. On success, the sent Message is returned. 
+            Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendFileRequestBase`1">
+            <summary>
+            Base class for all file-sending requests.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendFileRequestBase`1.ChatId">
+            <summary>
+            Unique identifier for the message recipient — User or GroupChat id
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendFileRequestBase`1.ReplyToMessageId">
+            <summary>
+            Optional. If the message is a reply, ID of the original message
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendFileRequestBase`1.ReplyMarkup">
+            <summary>
+            Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, 
+            instructions to hide keyboard or to force a reply from the user.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendFileRequestBase`1.FileParameterName">
+            <summary>
+            Name of parameter (when calling server) with file info (eg 'photo', 'video', 'document')
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendLocation">
+            <summary>
+            Use this method to send text messages. On success, the sent Message is returned.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendLocation.ChatId">
+            <summary>
+            Unique identifier for the message recipient — User or GroupChat id
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendLocation.Latitude">
+            <summary>
+            Latitude of location
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendLocation.Longitude">
+            <summary>
+            Longitude of location
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendLocation.ReplyToMessageId">
+            <summary>
+            Optional. If the message is a reply, ID of the original message
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendLocation.ReplyMarkup">
+            <summary>
+            Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, 
+            instructions to hide keyboard or to force a reply from the user.
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendMessage">
+            <summary>
+            Use this method to send text messages. On success, the sent Message is returned.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendMessage.ChatId">
+            <summary>
+            Unique identifier for the message recipient — User or GroupChat id
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendMessage.Text">
+            <summary>
+            Text of the message to be sent
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendMessage.ParseMode">
+            <summary>
+            Send "Markdown", if you want Telegram apps to show bold, italic and inline URLs in your bot's message. 
+            For the moment, only Telegram for Android supports this.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendMessage.DisableWebPagePreview">
+            <summary>
+            Optional. Disables link previews for links in this message
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendMessage.ReplyToMessageId">
+            <summary>
+            Optional. If the message is a reply, ID of the original message
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendMessage.ReplyMarkup">
+            <summary>
+            Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, 
+            instructions to hide keyboard or to force a reply from the user.
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendPhoto">
+            <summary>
+            Use this method to send photos. On success, the sent Message is returned.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendPhoto.Caption">
+            <summary>
+            Photo caption (may also be used when resending photos by file_id).
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendSticker">
+            <summary>
+            Use this method to send .webp stickers. On success, the sent Message is returned.
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendVideo">
+            <summary>
+            Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). 
+            On success, the sent Message is returned. 
+            Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendVideo.Duration">
+            <summary>
+            Duration of sent video in seconds
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendVideo.Caption">
+            <summary>
+            Video caption (may also be used when resending videos by file_id).
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Requests.SendVoice">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. 
+            For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). 
+            On success, the sent Message is returned. 
+            Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SendVoice.Duration">
+            <summary>
+            Duration of sent audio in seconds
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:NetTelegramBotApi.Requests.SetWebhook" -->
+        <member name="M:NetTelegramBotApi.Requests.SetWebhook.#ctor(System.String)">
+            <param name="url">HTTPS url to send updates to. Use null or empty string to remove webhook integration</param>
+        </member>
+        <member name="M:NetTelegramBotApi.Requests.SetWebhook.#ctor(System.String,NetTelegramBotApi.Requests.FileToSend)">
+            <param name="url">HTTPS url to send updates to. Use null or empty string to remove webhook integration</param>
+            <param name="certificatePublicKey">Optional. Your public key certificate so that the root certificate in use can be checked</param>
+        </member>
+        <member name="P:NetTelegramBotApi.Requests.SetWebhook.Url">
+            <summary>
+            HTTPS url to send updates to. Use an empty string to remove webhook integration
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.Audio">
+            <summary>
+            This object represents an audio file to be treated as music by the Telegram clients.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Audio.FileId">
+            <summary>
+            Unique identifier for this file
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Audio.Duration">
+            <summary>
+            Duration of the audio in seconds as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Audio.Performer">
+            <summary>
+            Optional. Performer of the audio as defined by sender or by audio tags
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Audio.Title">
+            <summary>
+            Optional. Title of the audio as defined by sender or by audio tags
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Audio.MimeType">
+            <summary>
+            Optional. MIME type of the file as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Audio.FileSize">
+            <summary>
+            Optional. File size
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.ChatBase">
+            <summary>
+            Base class for <see cref="T:NetTelegramBotApi.Types.User"/> and <see cref="T:NetTelegramBotApi.Types.GroupChat"/>
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.ChatBase.Id">
+            <summary>
+            Unique identifier for this user, or bot, or group chat
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.Contact">
+            <summary>
+            This object represents a phone contact.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Contact.PhoneNumbet">
+            <summary>
+            Contact's phone number
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Contact.FirstName">
+            <summary>
+            Contact's first name
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Contact.LastName">
+            <summary>
+            Optional. Contact's last name
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Contact.UserId">
+            <summary>
+            Optional. Contact's user identifier in Telegram
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.Document">
+            <summary>
+            This object represents a general file (as opposed to photos and audio files). 
+            Telegram users can send files of any type of up to 1.5 GB in size.
+            </summary>
+            <remarks>
+            A missing thumbnail for a file (or sticker) is presented as an empty object. 
+            </remarks>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Document.FileId">
+            <summary>
+            Unique file identifier
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Document.Thumb">
+            <summary>
+            Document thumbnail as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Document.FileName">
+            <summary>
+            Optional. Original filename as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Document.MimeType">
+            <summary>
+            Optional. MIME type of the file as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Document.FileSize">
+            <summary>
+            Optional. File size
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:NetTelegramBotApi.Types.File" -->
+        <member name="P:NetTelegramBotApi.Types.File.FileId">
+            <summary>
+            Unique identifier for this file
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.File.FileSize">
+            <summary>
+            Optional. File size, if known
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:NetTelegramBotApi.Types.File.FilePath" -->
+        <member name="P:NetTelegramBotApi.Types.File.FileDownloadUrl">
+            <summary>
+            Full Url, where file body/content must be downloaded from.
+            </summary>
+            <remarks>Extension of Telegram type!</remarks>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.ForceReply">
+            <summary>
+            Upon receiving a message with this object, Telegram clients will display a reply interface to the user 
+            (act as if the user has selected the bot‘s message and tapped ’Reply'). 
+            This can be extremely useful if you want to create user-friendly step-by-step interfaces 
+            without having to sacrifice privacy mode.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.ForceReply.Force">
+            <summary>
+            Shows reply interface to the user, as if they manually selected the bot‘s message and tapped ’Reply'
+            </summary>
+            <remarks>
+            In original Telegram API, member is called 'ForceReply', but in C# it's forbidden to have properties with same name as class
+            </remarks>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.ForceReply.Selective">
+            <summary>
+            Optional. Use this parameter if you want to force reply from specific users only. 
+            Targets: 
+             1) users that are @mentioned in the text of the Message object; 
+             2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
+            </summary>
+            <example>
+            A poll bot for groups runs in privacy mode (only receives commands, replies to its messages and mentions). 
+            There could be two ways to create a new poll: 
+              1) Explain the user how to send a command with parameters (e.g. /newpoll question answer1 answer2). 
+                  May be appealing for hardcore users but lacks modern day polish.
+              2) Guide the user through a step-by-step process. ‘Please send me your question’, 
+                 ‘Cool, now let’s add the first answer option‘, ’Great. 
+                 Keep adding answer options, then send /done when you‘re ready’.
+            The last option is definitely more attractive. And if you use ForceReply in your bot‘s questions, 
+            it will receive the user’s answers even if it only receives replies, commands and mentions — without any 
+            extra work for the user.
+            </example>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.GroupChat">
+            <summary>
+            This object represents a group chat.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.GroupChat.Title">
+            <summary>
+            Group name
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.Location">
+            <summary>
+            This object represents a point on the map.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Location.Longitude">
+            <summary>
+            Longitude as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Location.Latitude">
+            <summary>
+            Latitude as defined by sender
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.Message">
+            <summary>
+            This object represents a message.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.MessageId">
+            <summary>
+            Unique message identifier
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.From">
+            <summary>
+            Sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Date">
+            <summary>
+            Date the message was sent in Unix time
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Chat">
+            <summary>
+            Conversation the message belongs to — <see cref="T:NetTelegramBotApi.Types.User"/> in case of a private message, <see cref="T:NetTelegramBotApi.Types.GroupChat"/> in case of a group
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.ForwardFrom">
+            <summary>
+            Optional. For forwarded messages, sender of the original message
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.ForwardDate">
+            <summary>
+            Optional. For forwarded messages, date the original message was sent in Unix time
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.ReplyToMessage">
+            <summary>
+            Optional. For replies, the original message. 
+            Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Text">
+            <summary>
+            Optional. For text messages, the actual UTF-8 text of the message
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Audio">
+            <summary>
+            Optional. Message is an audio file, information about the file
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Document">
+            <summary>
+            Optional. Message is a general file, information about the file
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Photo">
+            <summary>
+            Optional. Message is a photo, available sizes of the photo
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Sticker">
+            <summary>
+            Optional. Message is a sticker, information about the sticker
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Video">
+            <summary>
+            Optional. Message is a video, information about the video
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Voice">
+            <summary>
+            Optional. Message is a voice message, information about the file
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Caption">
+            <summary>
+            Optional. Caption for the photo or video
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Contact">
+            <summary>
+            Optional. Message is a shared contact, information about the contact
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.Location">
+            <summary>
+            Optional. Message is a shared location, information about the location
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.NewChatParticipant">
+            <summary>
+            Optional. A new member was added to the group, information about them (this member may be bot itself)
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.LeftChatParticipant">
+            <summary>
+            Optional. A member was removed from the group, information about them (this member may be bot itself)
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.NewChatTitle">
+            <summary>
+            Optional. A group title was changed to this value
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.NewChatPhoto">
+            <summary>
+            Optional. A group photo was change to this value
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.DeleteChatPhoto">
+            <summary>
+            Optional. Informs that the group photo was deleted
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Message.GroupChatCreated">
+            <summary>
+            Optional. Informs that the group has been created
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.PhotoSize">
+            <summary>
+            This object represents one size of a photo or a file / sticker thumbnail.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.PhotoSize.FileId">
+            <summary>
+            Unique identifier for this file
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.PhotoSize.Width">
+            <summary>
+            Photo width
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.PhotoSize.Height">
+            <summary>
+            Photo height
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.PhotoSize.FileSize">
+            <summary>
+            Optional. File size
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.ReplyKeyboardHide">
+            <summary>
+            Upon receiving a message with this object, Telegram clients will hide the current custom keyboard and 
+            display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. 
+            An exception is made for one-time keyboards that are hidden immediately after the user presses a button 
+            (see ReplyKeyboardMarkup).
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.ReplyKeyboardHide.HideKeyboard">
+            <summary>
+            Requests clients to hide the custom keyboard
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.ReplyKeyboardHide.Selective">
+            <summary>
+            Optional. Use this parameter if you want to hide keyboard for specific users only. 
+            Targets: 
+              1) users that are @mentioned in the text of the Message object; 
+              2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
+            </summary>
+            <example>
+            A user votes in a poll, bot returns confirmation message in reply to the vote and hides keyboard for that user, 
+            while still showing the keyboard with poll options to users who haven't voted yet.
+            </example>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.ReplyKeyboardMarkup">
+            <summary>
+            This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.ReplyKeyboardMarkup.Keyboard">
+            <summary>
+            Array of button rows, each represented by an Array of Strings
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.ReplyKeyboardMarkup.ResizeKeyboard">
+            <summary>
+            Optional. Requests clients to resize the keyboard vertically for optimal fit 
+            (e.g., make the keyboard smaller if there are just two rows of buttons). 
+            Defaults to false, in which case the custom keyboard is always of the same height as the app's standard keyboard.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.ReplyKeyboardMarkup.OneTimeKeyboard">
+            <summary>
+            Optional. Requests clients to hide the keyboard as soon as it's been used. Defaults to false.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.ReplyKeyboardMarkup.Selective">
+            <summary>
+            Optional. Use this parameter if you want to show the keyboard to specific users only. 
+            Targets: 
+              1) users that are @mentioned in the text of the Message object; 
+              2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
+            </summary>
+            <example>
+            A user requests to change the bot‘s language, bot replies to the request with a keyboard to select the new language. 
+            Other users in the group don’t see the keyboard.
+            </example>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.Sticker">
+            <summary>
+            This object represents a sticker.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Sticker.FileId">
+            <summary>
+            Unique identifier for this file
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Sticker.Width">
+            <summary>
+            Sticker width
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Sticker.Height">
+            <summary>
+            Sticker height
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Sticker.Thumb">
+            <summary>
+            Sticker thumbnail in .webp or .jpg format
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Sticker.FileSize">
+            <summary>
+            Optional. File size
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.Update">
+            <summary>
+            This object represents an incoming update.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Update.UpdateId">
+            <summary>
+            The update‘s unique identifier. Update identifiers start from a certain positive number and increase sequentially. 
+            This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates 
+              or to restore the correct update sequence, should they get out of order.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Update.Message">
+            <summary>
+            Optional. New incoming message of any kind — text, photo, sticker, etc.
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.User">
+            <summary>
+            This object represents a Telegram user or bot.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.User.FirstName">
+            <summary>
+            User‘s or bot’s first name
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.User.LastName">
+            <summary>
+            Optional. User‘s or bot’s last name
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.User.Username">
+            <summary>
+            Optional. User‘s or bot’s username
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.UserProfilePhotos">
+            <summary>
+            This object represent a user's profile pictures.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.UserProfilePhotos.TotalCount">
+            <summary>
+            Total number of profile pictures the target user has
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.UserProfilePhotos.Photos">
+            <summary>
+            Requested profile pictures (in up to 4 sizes each)
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.Video">
+            <summary>
+            This object represents a video file.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Video.FileId">
+            <summary>
+            Unique identifier for this file
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Video.Width">
+            <summary>
+            Video width as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Video.Height">
+            <summary>
+            Video height as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Video.Duration">
+            <summary>
+            Duration of the video in seconds as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Video.Thumb">
+            <summary>
+            Video thumbnail
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Video.MimeType">
+            <summary>
+            Optional. Mime type of a file as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Video.FileSize">
+            <summary>
+            Optional. File size
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Types.Voice">
+            <summary>
+            This object represents a voice note.
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Voice.FileId">
+            <summary>
+            Unique identifier for this file
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Voice.Duration">
+            <summary>
+            Duration of the audio in seconds as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Voice.MimeType">
+            <summary>
+            Optional. Mime type of a file as defined by sender
+            </summary>
+        </member>
+        <member name="P:NetTelegramBotApi.Types.Voice.FileSize">
+            <summary>
+            Optional. File size
+            </summary>
+        </member>
+        <member name="T:NetTelegramBotApi.Util.JsonLowerCaseUnderscoreContractResolver">
+            <summary>
+            Thanks to http://stackoverflow.com/questions/18051395/custom-json-net-contract-resolver-for-lowercase-underscore-to-camelcase
+            </summary>
+        </member>
+    </members>
+</doc>
