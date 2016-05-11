@@ -3,8 +3,6 @@
 
 This script uses the Telegram library to provide basic funcions to the token-related bot. It's translated from the C# version
 
-Takes no paràmeters and requieres Json library from Newtonsoft as it's requiered to include telegram's library
-
 .PARAMETERS
 
 -token <string>
