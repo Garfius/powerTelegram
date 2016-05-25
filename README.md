@@ -17,7 +17,7 @@ Make sure the requiered libraries are located at .\files
   .\powerTelegram.ps1 -token "----your token----"
 ```
 
-## Alternate silent usage for sending static messages
+## Alternate silent usage to send static messages
 
 ```powershell
 $fixedBotKey = "----your token----"
