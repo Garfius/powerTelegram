@@ -22,6 +22,7 @@ Make sure the requiered libraries are located at .\files
 ```powershell
 $fixedBotKey = "----your token----"
 $message = "Wow, it's working !"
+$targetUserId = 123456
 
 $bot =  New-Object NetTelegramBotApi.TelegramBot($fixedBotKey)
 $getMe = New-Object NetTelegramBotApi.Requests.GetMe
@@ -32,11 +33,7 @@ if ($me -eq $null)
     exit
 }
 
-[string]$uploadedPhotoId = $null;
-[string]$uploadedDocumentId = $null;
-[long]$offset = 0;
-
-$reqAction = New-Object NetTelegramBotApi.Requests.SendMessage($IdUserPep, $message);
+$reqAction = New-Object NetTelegramBotApi.Requests.SendMessage($targetUserId, $message);
 $bot.MakeRequestAsync($reqAction).Wait();
 ```
 
