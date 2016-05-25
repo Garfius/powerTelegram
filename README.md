@@ -1,5 +1,5 @@
 # powerTelegram
-Telegram bot adaptation for PowerShell from [c# powershell bot](https://github.com/MrRoundRobin/telegram.bot)
+Telegram bot adaptation for PowerShell from [c# powershell bot](https://github.com/MrRoundRobin/telegram.bot). Tested on powershell 4 and 5.
 
 This script provides useful example to learn how to use telegram windows library 'DLL' under powershell. It also pretends to give command line access to bot messaging from windows O.S. useful for automation, alerts and scheduling.
 
